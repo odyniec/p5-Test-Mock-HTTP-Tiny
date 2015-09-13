@@ -1,0 +1,88 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Test::Mock::HTTP::Tiny - Record and replay HTTP requests/responses with HTTP::Tiny
+
+=head1 VERSION
+
+version 0.001
+
+=head1 SYNOPSIS
+
+Capture HTTP data:
+
+    use HTTP::Tiny;
+    use Test::Mock::HTTP::Tiny;
+
+    my $http = HTTP::Tiny->new;
+    my $resp = $http->get('http://www.cpan.org/');
+
+    print STDERR Test::Mock::HTTP::Tiny->captured_data_dump;
+
+Replay captured data:
+
+    Test::Mock::HTTP::Tiny->set_mocked_data([
+        {
+            url      => 'http://www.cpan.org/',
+            method   => 'GET',
+            args     => { ... },
+            response => { ... },
+        }
+    ]);
+
+    $resp = $http->get('http://www.cpan.org/');
+
+=head1 DESCRIPTION
+
+(TBA)
+
+=head1 METHODS
+
+=head2 mocked_data
+
+=head2 set_mocked_data
+
+=head2 append_mocked_data
+
+=head2 clear_mocked_data
+
+=head2 captured_data
+
+=head2 captured_data_dump
+
+=head2 clear_captured_data
+
+=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
+
+=head1 SUPPORT
+
+=head2 Bugs / Feature Requests
+
+Please report any bugs or feature requests through the issue tracker
+at L<https://github.com/odyniec/p5-Test-Mock-HTTP-Tiny/issues>.
+You will be notified automatically of any progress on your issue.
+
+=head2 Source Code
+
+This is open source software.  The code repository is available for
+public review and contribution under the terms of the license.
+
+L<https://github.com/odyniec/p5-Test-Mock-HTTP-Tiny>
+
+  git clone https://github.com/odyniec/p5-Test-Mock-HTTP-Tiny.git
+
+=head1 AUTHOR
+
+Michal Wojciechowski <odyniec@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2015 by Michal Wojciechowski.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
