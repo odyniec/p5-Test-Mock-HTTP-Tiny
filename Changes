@@ -2,6 +2,11 @@ Revision history for Test-Mock-HTTP-Tiny
 
 {{$NEXT}}
 
+0.002     2015-09-27
+		  * Setting mocked data now creates a copy
+		  * Removed code that fails in Perl 5.23.1+ [GitHub issue #1]
+		  * Added tests
+
 0.001     2015-09-13
           First version, released on an unsuspecting world.
 
