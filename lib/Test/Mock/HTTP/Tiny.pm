@@ -157,7 +157,7 @@ sub clear_captured_data {
             $mock_req = { %$mock_req };
 
             # Remove the request from mocked data so that it's not used again
-            splice($mocked_data, $i, 1);
+            splice(@$mocked_data, $i, 1);
 
             # Return the corresponding response
             return $mock_req->{response};
