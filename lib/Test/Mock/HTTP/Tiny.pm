@@ -63,11 +63,16 @@ sub mocked_data {
 sub set_mocked_data {
     my ($class, $new_mocked_data) = @_;
 
-    $mocked_data = $new_mocked_data;
-
-    if (ref($mocked_data) ne 'ARRAY') {
+    if (ref($new_mocked_data) eq 'ARRAY') {
+        # An arrayref of items was provided
+        $mocked_data = [ @$new_mocked_data ];
+    }
+    elsif (ref($new_mocked_data) eq 'HASH') {
         # A single item was provided
-        $mocked_data = [ $mocked_data ];
+        $mocked_data = [ { %$mocked_data } ];
+    }
+    else {
+        # TODO: error
     }
 }
 
@@ -82,9 +87,12 @@ sub append_mocked_data {
         # Multiple items are being appended
         push @$mocked_data, @$new_mocked_data;
     }
-    else {
+    elsif (ref($new_mocked_data) eq 'HASH') {
         # Single item is being appended
-        push @$mocked_data, $new_mocked_data;
+        push @$mocked_data, { %$new_mocked_data };
+    }
+    else {
+        # TODO: error
     }
 }
 
