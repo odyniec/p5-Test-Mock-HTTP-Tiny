@@ -69,7 +69,7 @@ sub set_mocked_data {
     }
     elsif (ref($new_mocked_data) eq 'HASH') {
         # A single item was provided
-        $mocked_data = [ { %$mocked_data } ];
+        $mocked_data = [ { %$new_mocked_data } ];
     }
     else {
         # TODO: error
